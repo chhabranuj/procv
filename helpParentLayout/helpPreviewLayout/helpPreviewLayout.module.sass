@@ -1,0 +1,103 @@
+.helpPreviewParent
+    width: 80%
+    display: flex
+    margin: 10rem 10%
+    align-items: flex-start
+    background-color: white
+    justify-content: space-between
+
+.helpPreviewLeftContainer
+    width: 48%
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: center
+
+.helpPreviewHeading
+    margin: 0
+    color: black
+    font-size: 2.25rem
+    text-align: center
+
+.helpPreviewSubHeading
+    color: #808080
+    font-size: medium
+    text-align: center
+    margin: 2rem 0 3rem 0
+
+.visitHelpParent
+    display: flex
+    margin-top: 2rem
+    align-items: center
+    justify-content: center
+
+.visitHelpIcon
+    color: black
+    font-size: 4rem
+    margin-right: 4rem
+
+.visitHelpTagline
+    color: black
+    font-size: x-large
+
+.visitHelpLink
+    cursor: pointer
+    color: #808080
+    font-size: large
+    margin-top: 0.5rem
+
+.visitHelpLink:hover
+    color: black
+    text-decoration: underline
+    transition: all 0.3s ease-in-out
+
+.helpPreviewRightContainer
+    width: 48%
+    display: flex
+    margin-left: 0
+    align-items: center
+    justify-content: center
+
+.helpPreviewImage
+    width: 100%
+
+@media screen and (max-width: 1050px)
+    .helpPreviewParent
+        width: 95%
+        margin: 5rem 2.5%
+        align-items: center
+
+    .helpPreviewImage
+        width: 100%
+
+@media screen and (max-width: 850px)
+    .helpPreviewParent
+        padding: 0 1rem
+        flex-direction: column-reverse
+
+    .helpPreviewLeftContainer
+        width: 100%
+        margin-left: 0
+
+    .helpPreviewHeading
+        font-size: 2rem
+
+    .helpPreviewSubHeading
+        margin-bottom: 1.5rem
+
+    .visitHelpParent
+        display: flex
+        margin-top: 1rem
+        align-items: center
+        justify-content: space-between
+
+    .visitHelpIcon
+        width: 25%
+        margin-right: 0
+
+    .helpPreviewRightContainer
+        width: 100%
+        margin-bottom: 2rem
+
+    .helpPreviewImage
+        width: 100%

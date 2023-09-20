@@ -1,0 +1,47 @@
+.ourAimParent
+    width: 80%
+    display: flex
+    margin: 10em 10%
+    align-items: center
+    justify-content: space-between
+
+.ourAimContainer
+    width: 48%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    justify-content: center
+
+.ourAimTitle
+    font-weight: bold
+    font-size: xx-large
+    margin-bottom: 1.5rem
+
+.ourAimContent
+    color: #808080
+    font-weight: 300
+    line-height: 1.8
+
+.ourAimVideo
+    width: 48%
+    border: none
+    height: 300px
+    border-radius: 0.5rem
+
+@media screen and (max-width: 1075px)
+    .ourAimParent
+        width: 95%
+        margin: 8rem 2.5%
+
+@media screen and (max-width: 800px)
+    .ourAimParent
+        margin: 5rem 2.5%
+        flex-direction: column
+
+    .ourAimContainer
+        width: 100%
+        margin-bottom: 3rem
+
+    .ourAimVideo
+        width: 100%
+        height: 250px

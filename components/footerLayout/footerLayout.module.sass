@@ -1,0 +1,117 @@
+.footerParent
+    width: 100%
+    display: flex
+    margin-top: 5rem
+    align-items: center
+    padding: 2rem 5% 0 5%
+    flex-direction: column
+    justify-content: center
+    background-color: black
+    // border-top-left-radius: 2rem
+    // border-top-right-radius: 2rem
+
+.footerChild
+    width: 100%
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+
+.footerAboutMobile
+    display: none
+
+.usefulLinksSection
+    width: 24%
+    color: white
+    margin: 1rem 0
+    text-align: center
+
+.sectionTitle
+    font-size: larger
+
+.sectionContent
+    margin-top: 0.75rem
+
+.sectionContentTitle
+    cursor: pointer
+    font-size: small
+    margin: 0.5rem 0
+    color: #808080
+
+.sectionContentTitle:hover
+    color: white
+
+.footerAbout
+    width: 48%
+    text-align: center
+
+.logo
+    height: 4rem
+    cursor: pointer
+
+.footerContent
+    width: 100%
+    margin: 1rem 0
+    color: #808080
+    font-size: small
+    font-weight: 200
+
+.footerContent:hover
+    color: white
+
+.connectSection
+    width: 24%
+    color: white
+    margin: 1rem 0
+    text-align: center
+
+.connectSectionContent
+    display: flex
+    align-items: center
+    margin-top: 0.75rem
+    flex-direction: column
+    justify-content: center
+
+.sectionContentContainer
+    display: flex
+    cursor: pointer
+    font-size: small
+    color: #808080
+    margin: 0.25rem 0
+    align-items: center
+    justify-content: space-evenly
+    transition: all 0.5s ease 0s
+
+.sectionContentContainer:hover
+    color: white
+
+.footerCopyright
+    width: 100%
+    color: white
+    display: flex
+    margin: 1rem 0
+    font-size: small
+    align-items: center
+    justify-content: center
+
+@media screen and (max-width: 1075px)
+    .footerParent
+        padding: 2rem 2.5% 0 2.5%
+
+@media screen and (max-width: 800px)
+    .footerChild
+        align-items: center
+        flex-direction: column
+
+    .footerAbout
+        display: none
+
+    .footerAboutMobile
+        width: 90%
+        text-align: center
+        display: inline-block
+
+    .usefulLinksSection
+        width: 48%
+
+    .connectSection
+        width: 48%

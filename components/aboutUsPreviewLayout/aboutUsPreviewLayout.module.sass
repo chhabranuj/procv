@@ -1,0 +1,85 @@
+.aboutUsPreviewParent
+    margin: 0
+    width: 100%
+    color: white
+    display: flex
+    margin-top: 30vh
+    padding: 8rem 10%
+    position: relative
+    align-items: center
+    flex-direction: column
+    justify-content: center
+    background-color: black
+
+.aboutUsCardContainer
+    width: 80%
+    bottom: 85%
+    display: flex
+    position: absolute
+    align-items: center
+    justify-content: space-between
+
+.aboutUsCardData
+    width: 32%
+    height: 30vh
+    color: black
+    padding: 0 5%
+    display: flex
+    align-items: center
+    border-radius: 0.5rem
+    flex-direction: column
+    justify-content: center
+    background-color: white
+    box-shadow: 0 10px 35px 0 rgba(0,0,0,.1)
+
+.aboutUsCardIcon
+    font-size: xx-large
+
+.aboutUsCardTitle
+    font-size: larger
+    margin: 1rem 0 0.75rem 0
+
+.aboutUsCardContent
+    color: #808080
+    font-size: small
+    text-align: center
+
+.aboutUsTitle
+    font-weight: 400
+    font-size: xxx-large
+    margin: 1rem 0 2rem 0
+
+.aboutUsContent
+    width: 80%
+    color: #808080
+    font-weight: 200
+    text-align: center
+
+@media screen and (max-width: 1075px)
+    .aboutUsPreviewParent
+        padding: 8rem 2.5%
+
+    .aboutUsContent
+        width: 95%
+
+    .aboutUsCardContainer
+        width: 95%
+
+@media screen and (max-width: 800px)
+    .aboutUsPreviewParent
+        margin-top: 100vh
+
+    .aboutUsCardContainer
+        width: 90%
+        bottom: 90%
+        flex-direction: column
+
+    .aboutUsCardData
+        width: 100%
+        margin-top: 2rem
+
+    .aboutUsTitle
+        font-size: xx-large
+
+    .aboutUsContent
+        font-size: 0.9rem

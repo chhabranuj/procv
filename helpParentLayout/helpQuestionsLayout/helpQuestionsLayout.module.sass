@@ -1,0 +1,43 @@
+.helpQuestionsParent
+    width: 100%
+    padding: 0 5%
+    margin-bottom: 2rem
+    border-radius: 0.5rem
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
+
+.helpQuestionsChild
+    width: 100%
+    display: flex
+    cursor: pointer
+    padding: 1rem 0
+    align-items: center
+    justify-content: space-between
+
+.helpQuestion
+    width: 90%
+    color: black
+    font-size: medium
+    transition: all 0.5s ease-in-out
+
+.helpQuestionIcon
+    width: 10%
+    text-align: end
+    color: #ffffff
+    font-size: larger
+    transition: all 0.5s ease-in-out
+
+.helpAnswer
+    width: 90%
+    padding: 1rem 0
+    color: #808080
+
+@media screen and (max-width: 800px)
+    .helpQuestionsChild
+        width: 100%
+
+    .helpQuestion
+        width: 80%
+        margin-right: 10%
+
+    .helpAnswer
+        width: 100%

@@ -1,0 +1,87 @@
+.landingStyle
+    width: 80%
+    display: flex
+    margin: 0 10%
+    min-height: 100vh
+    padding-top: 10vh
+    align-items: center
+    margin-bottom: 5rem
+    justify-content: space-between
+
+.landingContainer
+    width: 48%
+
+.landingSlogan
+    font-weight: 200
+    font-size: xxx-large
+
+.landingText
+    line-height: 1.8
+    font-weight: 300
+    color: #808080
+    margin: 2rem 0 3rem 0
+
+.landingButtonContainer
+    z-index: 5
+    width: 40%
+    cursor: pointer
+    padding: 1.75rem 0
+    position: relative
+    border-radius: 0.25rem
+    border: 1px solid black
+
+.landingButton
+    width: 100%
+    top: 0.5rem
+    left: 0.5rem
+    height: 100%
+    opacity: 60%
+    display: flex
+    cursor: pointer
+    transition: 0.3s
+    position: absolute
+    align-items: center
+    border-radius: 0.2rem
+    background-color: black
+    justify-content: center
+
+.landingButtonContainer:hover .landingButton
+    top: 0
+    left: 0
+    opacity: 100%
+
+.landingButtonContent
+    // color: 
+    color: white
+
+// .landingButtonContainer:hover .landingButtonContent
+//     color: white
+
+.landingBg
+    width: 100%
+
+@media screen and (max-width: 1075px)
+    .landingStyle
+        width: 95%
+        margin: 0 2.5%
+
+    .landingSlogan
+        font-size: xx-large
+
+    .landingButtonContainer
+        width: 40%
+
+@media screen and (max-width: 800px)
+    .landingStyle
+        flex-direction: column
+        justify-content: space-evenly
+
+    .landingContainer
+        width: 100%
+        display: flex
+        margin: 1.5rem 0
+        flex-direction: column
+        align-items: flex-start
+
+    .landingButtonContainer
+        width: 45%

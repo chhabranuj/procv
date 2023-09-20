@@ -1,0 +1,133 @@
+.newsletterParent
+    width: 100%
+    display: flex
+    margin-top: 5rem
+    padding: 2.5rem 10%
+    align-items: center
+    flex-direction: column
+    justify-content: center
+    background-color: black
+
+.newsletterHeading
+    margin: 0
+    color: white
+    text-align: center
+    font-size: 2.25rem
+
+.newsletterSubHeading
+    color: white
+    line-height: 1.5
+    font-size: medium
+    text-align: center
+    margin: 0.5rem 0 3rem 0
+
+.newsletterChild
+    width: 100%
+    display: flex
+    min-height: 30vh
+    align-items: center
+    justify-content: center
+    background-color: black
+
+.newsletterContainer
+    width: 50%
+    display: flex
+    align-items: center
+    flex-direction: column
+    justify-content: center
+
+.newsletterTagline
+    margin: 0
+    width: 75%
+    color: white
+    font-size: 2rem
+    text-align: center
+
+.newsletterSubTagline
+    margin: 0
+    width: 75%
+    color: #808080
+    font-size: medium
+    text-align: center
+    margin-top: 0.5rem
+
+.newsletterEmailParent
+    width: 70%
+    display: flex
+    padding: 0.5rem
+    padding-left: 2rem
+    border-radius: 3rem
+    align-items: center
+    background-color: white
+    justify-content: space-between
+
+.newsletterEmail
+    width: 70%
+    color: black
+    border: none
+    outline: none
+    cursor: pointer
+    font-size: 1rem
+    background-color: transparent
+
+.newsletterEmail::placeholder
+    color: black
+
+.newsletterEmailError
+    color: red
+    font-size: small
+    margin-top: 0.5rem
+
+.newsletterSubmitButton
+    width: 3rem
+    height: 3rem
+    border: none
+    cursor: pointer
+    border-radius: 50%
+    background-color: white
+
+.newsletterSubmitButton:hover
+    background-color: black
+
+.newsletterSubmitButton:hover .newsletterEmailButtonIcon
+    color: white
+
+.newsletterEmailButtonIcon
+    color: black
+
+.newsletterTAndC
+    margin: 0
+    width: 75%
+    color: white
+    font-size: small
+    margin-top: 1rem
+    text-align: center
+
+@media screen and (max-width: 1075px)
+    .newsletterParent
+        width: 100%
+        padding: 2rem 2.5%
+
+    .newsletterContainer
+        width: 80%
+
+    .newsletterEmailParent
+        margin-top: 2rem
+
+@media screen and (max-width: 700px)
+    .newsletterChild
+        width: 100%
+        padding: 2rem 1rem
+        flex-direction: column
+
+    .newsletterContainer
+        width: 100%
+
+    .newsletterTagline
+        width: 95%
+
+    .newsletterEmailParent
+        width: 90%
+
+    .newsletterTAndC
+        width: 90%
