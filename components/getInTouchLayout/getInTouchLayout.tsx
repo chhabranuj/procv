@@ -1,22 +1,25 @@
+import axios from "axios";
 import { useState } from "react";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import getInTouchStyle from "./getInTouchLayout.module.sass";
 
-const GetInTouchLayout = () => {
+const GetInTouchLayout = (props: any) => {
   const [userData, setUserData] = useState({
     name: "",
     email: "",
     number: "",
     message: "",
   });
-
   const [errorData, setErrorData] = useState({
     nameError: false,
     emailError: false,
     numberError: false,
     messageError: false,
+    formError: false,
     sendError: false,
     sendSuccess: false,
   });
+  const [loader, setLoader] = useState<boolean>(false);
 
   const handleNameInput = (e: any) => {
     setUserData({
@@ -71,22 +74,47 @@ const GetInTouchLayout = () => {
     ) {
       setErrorData({
         ...errorData,
-        sendError: true,
+        formError: true,
       });
     } else {
-      // Not working i.e. inputs are not empty on successful submit.
-      setUserData({
-        ...userData,
-        name: "",
-        email: "",
-        number: "",
-        message: "",
-      });
-      console.log("hi");
-      setErrorData({
-        ...errorData,
-        sendError: false,
-        sendSuccess: true,
+      setLoader(true);
+      const data = {
+        Name: userData.name,
+        Email: userData.email,
+        Number: userData.number,
+        Message: userData.message,
+      };
+
+      axios.post("/api/addUserData", data).then((response: any) => {
+        if (response.data.dataAdded) {
+          setUserData({
+            name: "",
+            email: "",
+            number: "",
+            message: "",
+          });
+          setErrorData({
+            ...errorData,
+            formError: false,
+            sendError: false,
+            sendSuccess: true,
+          });
+        } else {
+          setErrorData({
+            ...errorData,
+            formError: false,
+            sendSuccess: false,
+            sendError: true,
+          });
+        }
+        setLoader(false);
+
+        const emailData = {
+          to: userData.email,
+          subject: "Thanks for reaching out to ProCv!.",
+          type: "contact",
+        };
+        axios.post("/api/sendEmail", emailData).then((response: any) => {});
       });
     }
   };
@@ -95,9 +123,9 @@ const GetInTouchLayout = () => {
     <div className={getInTouchStyle.getInTouchParent}>
       <p className={getInTouchStyle.getInTouchTitle}>Get In Touch</p>
       <p className={getInTouchStyle.getInTouchContent}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates
-        molestiae voluptatem iste ad delectus, magni ratione neque ea?
-        Veritatis, expedita.
+        No need to Sign Up/Login for our service.
+        <br />
+        Just fill up the form and we'll get back to you as soon as possible.
       </p>
       <div className={getInTouchStyle.getInTouchContainer}>
         <div className={getInTouchStyle.getInTouchContainerSection}>
@@ -113,8 +141,10 @@ const GetInTouchLayout = () => {
             </p>
             <input
               type="text"
+              placeholder="Super Man"
               className={getInTouchStyle.getInTouchInput}
               onInput={handleNameInput}
+              value={userData.name}
             />
             {errorData.nameError && (
               <p className={getInTouchStyle.getInTouchInputError}>
@@ -128,12 +158,14 @@ const GetInTouchLayout = () => {
             </p>
             <input
               type="email"
+              placeholder="super.man@dc.com"
               className={getInTouchStyle.getInTouchInput}
               onInput={handleEmailInput}
+              value={userData.email}
             />
             {errorData.emailError && (
               <p className={getInTouchStyle.getInTouchInputError}>
-                Please enter a valid g-mail id.
+                Please enter a valid gmail id.
               </p>
             )}
           </div>
@@ -143,8 +175,10 @@ const GetInTouchLayout = () => {
             </p>
             <input
               type="number"
+              placeholder="(999) 999-9999"
               className={getInTouchStyle.getInTouchInput}
               onInput={handleNumberInput}
+              value={userData.number}
             />
             {errorData.numberError && (
               <p className={getInTouchStyle.getInTouchInputError}>
@@ -158,8 +192,14 @@ const GetInTouchLayout = () => {
             </p>
             <textarea
               rows={6}
+              placeholder={
+                props.name
+                  ? `Can I get some information about ${props.name} resume?`
+                  : "Can I get some information about ProCV?"
+              }
               className={getInTouchStyle.getInTouchInput}
               onInput={handleMessageInput}
+              value={userData.message}
             />
             {errorData.messageError && (
               <p className={getInTouchStyle.getInTouchInputError}>
@@ -173,7 +213,7 @@ const GetInTouchLayout = () => {
           >
             SEND
           </button>
-          {errorData.sendError && (
+          {errorData.formError && (
             <p
               className={getInTouchStyle.getInTouchInputError}
               style={{ textAlign: "center" }}
@@ -183,18 +223,26 @@ const GetInTouchLayout = () => {
           )}
           {errorData.sendSuccess && (
             <p className={getInTouchStyle.getInTouchFormFilled}>
-              Form Filled Successfully :)
+              Thank you for reaching out. We will get back to you shortly :)
+            </p>
+          )}
+          {errorData.sendError && (
+            <p
+              className={getInTouchStyle.getInTouchFormFilled}
+              style={{ backgroundColor: "red" }}
+            >
+              Something Went Wrong :( Please try again.
             </p>
           )}
           <p className={getInTouchStyle.whatsappUs}>
-            Don't want to fill up the form.
+            Don't want to fill up the form?
             <br />
             Don't Worry, just{" "}
             <span
               style={{ color: "green" }}
               onClick={() => {
                 window.open(
-                  "//api.whatsapp.com/send?phone=917217746275&text=Hey, I want some details about a Resume."
+                  "//api.whatsapp.com/send?phone=917217746275&text=Hey, can I get some information about ProCV?"
                 );
               }}
             >
@@ -204,6 +252,7 @@ const GetInTouchLayout = () => {
           </p>
         </div>
       </div>
+      {loader && <LoaderLayout />}
     </div>
   );
 };

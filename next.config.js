@@ -3,4 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+module.exports = {
+  env: {
+    username: 'chhabranuj',
+    password: 'Godisgreat',
+    emailPassword: 'fmge awoa nvgi czpw'
+  },
+}

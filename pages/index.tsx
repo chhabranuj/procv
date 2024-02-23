@@ -3,7 +3,7 @@ import Layout from "@/components/layout/layout";
 import OurAim from "@/components/ourAimLayout/ourAimLayout";
 import LandingLayout from "@/components/landingLayout/landingLayout";
 import GetStarted from "@/components/getStartedLayout/getStartedlayout";
-import HelpPreview from "@/helpParentLayout/helpPreviewLayout/helpPreviewLayout";
+import HelpPreview from "@/components/helpParentLayout/helpPreviewLayout/helpPreviewLayout";
 import AboutUsPreview from "@/components/aboutUsPreviewLayout/aboutUsPreviewLayout";
 
 export default function Home() {

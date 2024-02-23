@@ -1,0 +1,123 @@
+.designCardParent
+    width: 26%
+    display: flex
+    transition: .5s
+    padding: 0.5rem
+    align-items: center
+    margin-bottom: 2rem
+    border-radius: 0.5rem
+    flex-direction: column
+    justify-content: space-between
+
+.designCardParent:hover
+    border: 1px solid black
+    transform: translateY(-0.25rem)
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px
+
+.designCardImage
+    height: 70%
+    width: 100%
+    border-radius: 0.5rem
+
+.designCardDescriptionContainer
+    height: 30%
+    width: 100%
+    display: flex
+    margin-top: 1rem
+    flex-direction: column
+    align-items: flex-start
+    justify-content: space-around
+
+.designCardContent
+    width: 100%
+    display: flex
+    align-items: center
+    justify-content: space-between
+
+.priceContainer
+    width: 25%
+    display: flex
+    padding: 0.5rem 0
+    align-items: center
+    border-radius: 0.5rem
+    flex-direction: column
+    justify-content: center
+    border: 1px solid black
+    background-color: transparent
+
+.containerTitle
+    font-size: xx-small
+
+.containerContent
+    font-size: small
+    font-weight: bold
+
+.ratingContainerContent
+    display: flex
+    margin-top: 0.1rem
+    align-items: center
+    justify-content: center
+
+.designCardTitle
+    width: 45%
+    font-size: large
+    font-weight: 300
+    text-align: center
+
+.ratingContainer
+    width: 25%
+    color: white
+    display: flex
+    padding: 0.5rem 0
+    align-items: center
+    border-radius: 0.5rem
+    flex-direction: column
+    justify-content: center
+    background-color: black
+
+.designCardHandleContainer
+    width: 100%
+    display: flex
+    margin-top: 0.75rem
+    align-items: center
+    justify-content: space-between
+
+.designCardLivePreview
+    width: 48%
+    color: white
+    border: none
+    display: flex
+    padding: 0.5rem
+    cursor: pointer
+    align-items: center
+    border-radius: 0.25rem
+    justify-content: center
+    border: 1px solid black
+    background-color: black
+
+.designCardLivePreview:hover
+    color: black
+    background-color: transparent
+
+.designCardBuyNow
+    width: 48%
+    display: flex
+    cursor: pointer
+    padding: 0.5rem 0
+    align-items: center
+    border-radius: 0.25rem
+    border: 1px solid black
+    justify-content: center
+    background-color: transparent
+
+.designCardBuyNow:hover
+    color: white
+    background-color: black
+
+@media screen and (max-width: 1075px)
+    .designCardParent
+        width: 40%
+
+@media screen and (max-width: 800px)
+    .designCardParent
+        width: 100%

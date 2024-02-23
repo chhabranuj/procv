@@ -3,6 +3,11 @@ import ourAimStyle from "./ourAimLayout.module.sass";
 const OurAimLayout = () => {
   return (
     <div className={ourAimStyle.ourAimParent}>
+      <img
+        className={ourAimStyle.certificate}
+        src={"/static/certificate.png"}
+        alt="Certificate Image"
+      />
       <div className={ourAimStyle.ourAimContainer}>
         <p className={ourAimStyle.ourAimTitle}>Our Aim</p>
         <p className={ourAimStyle.ourAimContent}>
@@ -18,10 +23,6 @@ const OurAimLayout = () => {
           step in your career journey.
         </p>
       </div>
-      <iframe
-        className={ourAimStyle.ourAimVideo}
-        src="https://www.youtube.com/embed/aKn0HddzuWM?si=k1l-YeRHb2eQxZg5"
-      ></iframe>
     </div>
   );
 };

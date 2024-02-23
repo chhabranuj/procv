@@ -3,21 +3,17 @@ import { useEffect, useState } from "react";
 import { GrFormClose } from "react-icons/gr";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import titleBarStyle from "./titleBarLayout.module.sass";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 
 const TitleBarLayout = () => {
-  const menu = ["home", "about", "help", "designs", "contact"];
+  const menu = ["home", "designs", "help", "contact"];
 
   const router = useRouter();
-  const [activePage, setActivePage] = useState("home");
+  const [loader, setLoader] = useState<boolean>(false);
+  const [activePage, setActivePage] = useState<string>("home");
   const [toggleMenu, setToggleMenu] = useState<boolean>(false);
-  const [toTheTopButton, setToTheTopButton] = useState<string>("none");
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      window.scrollY > 50
-        ? setToTheTopButton("inline")
-        : setToTheTopButton("none");
-    });
     setActivePage(
       router.pathname == "/" ? "home" : router.pathname.split("/")[1]
     );
@@ -28,10 +24,15 @@ const TitleBarLayout = () => {
   };
 
   const handleScrollToTop = () => {
+    setLoader(true);
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+    router.push("/");
+    setInterval(() => {
+      setLoader(false);
+    }, 1000);
   };
 
   return (
@@ -55,6 +56,7 @@ const TitleBarLayout = () => {
                     : titleBarStyle.menuContent
                 }
                 onClick={() => {
+                  setLoader(true);
                   setActivePage(item);
                   item == "home" ? router.push("/") : router.push(item);
                 }}
@@ -95,6 +97,7 @@ const TitleBarLayout = () => {
                         : titleBarStyle.menuContent
                     }
                     onClick={() => {
+                      setLoader(true);
                       setActivePage(item);
                       item == "home" ? router.push("/") : router.push(item);
                     }}
@@ -111,11 +114,12 @@ const TitleBarLayout = () => {
       {/* To The Top Button */}
       {/* <button
         className={titleBarStyle.toTheTopButton}
-        style={{ display: toTheTopButton }}
+        // style={{ display: toTheTopButton }}
         onClick={handleScrollToTop}
       >
         <p className={titleBarStyle.toTheTopButtonText}>TOP</p>
       </button> */}
+      {loader && <LoaderLayout />}
     </div>
   );
 };

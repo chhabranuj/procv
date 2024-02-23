@@ -47,7 +47,7 @@ const AboutUsPreviewLayout = () => {
         process seamless and efficient. Wheather you're seasoned professional or
         just starting your career journey, we're here to help you showcase your
         skills and experiences in the best possible light. Join us and take the
-        enxt step towards landing your dream job with a standout resume that
+        next step towards landing your dream job with a standout resume that
         trusly represents you.
       </p>
     </div>

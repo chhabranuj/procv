@@ -1,15 +1,63 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import { BiPhone } from "react-icons/bi";
 import { FaCopyright } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { BiPhone } from "react-icons/bi";
 import footerStyle from "./footerLayout.module.sass";
+import LoaderLayout from "../loaderLayout/loaderLayout";
 import { AiOutlineWhatsApp, AiFillLinkedin } from "react-icons/ai";
 
 const FooterLayout = () => {
-  const handleScrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+  const usefulLinks = [
+    {
+      title: "About Us",
+      link: "/about",
+    },
+    {
+      title: "Help/FAQ's",
+      link: "/help",
+    },
+    {
+      title: "Privacy Policy",
+      link: "/documentation/privacyPolicy",
+    },
+    {
+      title: "Terms & Conditions",
+      link: "/documentation/terms&Conditions",
+    },
+  ];
+  const connectWithUs = [
+    {
+      icon: <HiOutlineMail style={{ marginRight: "0.5rem" }} />,
+      title: "E-Mail",
+      link: "mailto:procv.contact@gmail.com",
+    },
+    {
+      icon: <BiPhone style={{ marginRight: "0.5rem" }} />,
+      title: "Call Us",
+      link: "tel:7217746275",
+    },
+    {
+      icon: <AiFillLinkedin style={{ marginRight: "0.5rem" }} />,
+      title: "LinkedIn",
+      link: "https://www.linkedin.com/in/anuj-chhabra-b0b2a422a/",
+    },
+    {
+      icon: <AiOutlineWhatsApp style={{ marginRight: "0.5rem" }} />,
+      title: "Whatsapp",
+      link: "//api.whatsapp.com/send?phone=917217746275&text=Hey, I want some details about a Resume.",
+    },
+  ];
+
+  const router = useRouter();
+  const [loader, setLoader] = useState<boolean>(false);
+
+  const naviagetToSecretChamber = () => {
+    setLoader(true);
+    router.push("/admin/login");
+    setInterval(() => {
+      setLoader(false);
+    }, 3000);
   };
 
   return (
@@ -20,7 +68,7 @@ const FooterLayout = () => {
           src={"/static/logoLight.png"}
           alt="Logo"
           className={footerStyle.logo}
-          onClick={handleScrollToTop}
+          onClick={naviagetToSecretChamber}
         />
         <p className={footerStyle.footerContent}>
           ProCv is an innovative platform that transforms traditional resumes
@@ -36,12 +84,29 @@ const FooterLayout = () => {
         <div className={footerStyle.usefulLinksSection}>
           <p className={footerStyle.sectionTitle}>Useful Links</p>
           <div className={footerStyle.sectionContent}>
-            <p className={footerStyle.sectionContentTitle}>About Us</p>
-            <p className={footerStyle.sectionContentTitle}>Help/FAQ's</p>
-            <p className={footerStyle.sectionContentTitle}>Privacy Policy</p>
-            <p className={footerStyle.sectionContentTitle}>
-              Terms & Conditions
-            </p>
+            {usefulLinks.map((item, index) => {
+              return (
+                <p
+                  key={index}
+                  className={footerStyle.sectionContentTitle}
+                  onClick={() => {
+                    setLoader(true);
+                    router.push(
+                      {
+                        pathname: item.link,
+                        query: { title: item.title },
+                      },
+                      item.link
+                    );
+                    setInterval(() => {
+                      setLoader(false);
+                    }, 3000);
+                  }}
+                >
+                  {item.title}
+                </p>
+              );
+            })}
           </div>
         </div>
 
@@ -51,7 +116,7 @@ const FooterLayout = () => {
             src={"/static/logoLight.png"}
             alt="Logo"
             className={footerStyle.logo}
-            onClick={handleScrollToTop}
+            onClick={naviagetToSecretChamber}
           />
           <p className={footerStyle.footerContent}>
             ProCv is an innovative platform that transforms traditional resumes
@@ -66,46 +131,20 @@ const FooterLayout = () => {
         <div className={footerStyle.connectSection}>
           <p className={footerStyle.sectionTitle}>Connect With Us</p>
           <div className={footerStyle.connectSectionContent}>
-            <div
-              className={footerStyle.sectionContentContainer}
-              onClick={() => {
-                window.open("mailto:anujchhabra.work@gmail.com");
-              }}
-            >
-              <HiOutlineMail style={{ marginRight: "0.5rem" }} />
-              <p>E-Mail</p>
-            </div>
-            <div
-              className={footerStyle.sectionContentContainer}
-              onClick={() => {
-                window.open("tel:7217746275");
-              }}
-            >
-              <BiPhone style={{ marginRight: "0.5rem" }} />
-              <p>Call Us</p>
-            </div>
-            <div
-              className={footerStyle.sectionContentContainer}
-              onClick={() => {
-                window.open(
-                  "https://www.linkedin.com/in/anuj-chhabra-b0b2a422a/"
-                );
-              }}
-            >
-              <AiFillLinkedin style={{ marginRight: "0.5rem" }} />
-              <p>LinkedIn</p>
-            </div>
-            <div
-              className={footerStyle.sectionContentContainer}
-              onClick={() => {
-                window.open(
-                  "//api.whatsapp.com/send?phone=917217746275&text=Hey, I want some details about a Resume."
-                );
-              }}
-            >
-              <AiOutlineWhatsApp style={{ marginRight: "0.5rem" }} />
-              <p>Whatsapp</p>
-            </div>
+            {connectWithUs.map((item, index) => {
+              return (
+                <div
+                  key={index}
+                  className={footerStyle.sectionContentContainer}
+                  onClick={() => {
+                    window.open(item.link);
+                  }}
+                >
+                  {item.icon}
+                  <p>{item.title}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -118,6 +157,8 @@ const FooterLayout = () => {
           2023 - ProCv. All Rights Reserved.
         </p>
       </div>
+
+      {loader && <LoaderLayout />}
     </div>
   );
 };

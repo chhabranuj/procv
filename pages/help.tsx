@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Layout from "@/components/layout/layout";
-import HelpLayout from "@/helpParentLayout/helpLayout/helpLayout";
+import HelpLayout from "@/components/helpParentLayout/helpLayout/helpLayout";
 import PageAboutLayout from "@/components/pageAboutLayout/pageAboutLayout";
 
 const Help = () => {

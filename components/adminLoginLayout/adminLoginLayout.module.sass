@@ -1,0 +1,35 @@
+.adminLoginParent
+    width: 80%
+    display: flex
+    margin: 0 10%
+    padding-top: 5rem
+    align-items: center
+    flex-direction: column
+    justify-content: center
+
+.adminLoginChild
+    width: 100%
+    display: flex
+    margin-top: 2rem
+    align-items: center
+    justify-content: space-between
+
+.adminLoginTitle
+    font-weight: 300
+    text-align: center
+    font-size: xx-large
+    margin-bottom: 2rem
+
+@media screen and (max-width: 1075px)
+    .adminLoginParent
+        width: 95%
+        margin: 0 2.5%
+
+@media screen and (max-width: 800px)
+    .adminLoginParent
+        flex-direction: column
+        justify-content: space-evenly
+
+    .adminLoginChild
+        margin-top: 0
+        flex-direction: column

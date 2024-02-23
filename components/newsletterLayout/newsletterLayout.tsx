@@ -1,26 +1,45 @@
+import axios from "axios";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import { FaLongArrowAltRight } from "react-icons/fa";
 import newsletterStyle from "./newsletterLayout.module.sass";
 
 const NewsletterLayout = () => {
-  const [email, setEmail] = useState<{ id: string; error: boolean }>({
+  const router = useRouter();
+  const [email, setEmail] = useState<{
+    id: string;
+    error: boolean;
+    success: boolean;
+  }>({
     id: "",
     error: false,
+    success: false,
   });
 
   const setNewsletterEmail = (e: any) => {
     setEmail({
       id: e.target.value,
       error: false,
+      success: false,
     });
   };
 
   const handleNewsletterEmail = () => {
     if (email.id.split("@")[1] === "gmail.com") {
       setEmail({
-        ...email,
+        id: "",
         error: false,
+        success: true,
       });
+
+      const data = {
+        to: email.id,
+        subject:
+          "Welcome to ProCv! Let's Craft Your Digital Identity Together.",
+        type: "newsletter",
+      };
+
+      axios.post("/api/sendEmail", data).then((response: any) => {});
     } else {
       setEmail({
         ...email,
@@ -52,6 +71,7 @@ const NewsletterLayout = () => {
               className={newsletterStyle.newsletterEmail}
               type="email"
               name="email"
+              value={email.id}
               placeholder="Enter your email address."
               onChange={setNewsletterEmail}
             />
@@ -69,14 +89,44 @@ const NewsletterLayout = () => {
               Please enter a valid Gmail id.
             </p>
           )}
+          {email.success && (
+            <p
+              className={newsletterStyle.newsletterEmailError}
+              style={{ color: "#0bd20b" }}
+            >
+              Email successfully added.
+            </p>
+          )}
           <p className={newsletterStyle.newsletterTAndC}>
             By entering your email address and clicking Submit, you affirm you
             have read and agree to the{" "}
-            <span style={{ color: "skyblue", cursor: "pointer" }}>
+            <span
+              style={{ color: "skyblue", cursor: "pointer" }}
+              onClick={() => {
+                router.push(
+                  {
+                    pathname: "/documentation/privacyPolicy",
+                    query: { title: "Privacy Policy" },
+                  },
+                  "/documentation/privacyPolicy"
+                );
+              }}
+            >
               Privacy Policy
             </span>{" "}
             and{" "}
-            <span style={{ color: "skyblue", cursor: "pointer" }}>
+            <span
+              style={{ color: "skyblue", cursor: "pointer" }}
+              onClick={() => {
+                router.push(
+                  {
+                    pathname: "/documentation/terms&Conditions",
+                    query: { title: "Terms & Conditions" },
+                  },
+                  "/documentation/terms&Conditions"
+                );
+              }}
+            >
               Terms & Conditions
             </span>{" "}
             and want to receive news.

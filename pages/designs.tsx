@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Layout from "@/components/layout/layout";
 import PageAboutLayout from "@/components/pageAboutLayout/pageAboutLayout";
-import DealOfTheDayLayout from "@/components/dealOfTheDayLayout/dealOfTheDayLayout";
+import Design from "@/components/designParentLayout/design Layout/designLayout";
 
 const Designs = () => {
   return (
@@ -10,7 +10,7 @@ const Designs = () => {
         <title>ProCv - Designs</title>
       </Head>
       <PageAboutLayout title="Designs" />
-      <DealOfTheDayLayout />
+      <Design />
     </Layout>
   );
 };
